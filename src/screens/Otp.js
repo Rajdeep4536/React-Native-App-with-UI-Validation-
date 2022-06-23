@@ -90,11 +90,11 @@ import {
             inactiveColor="rgba(255, 255, 255, 0.2)"
             autoFocus={false}
             // inputPosition='center'
-            size={50}
+            size={55}
             codeLength={4}
-            space={25}
+            space={16}
             // containerStyle={{ }}
-            codeInputStyle={{borderWidth: 1, backgroundColor: 'rgb(36,37,38)'}}
+            codeInputStyle={{ backgroundColor: 'rgb(36,37,38)',borderRadius:7.5,}}
             onSubmit={Text => {
               setOtp(Text), otpValidate(Text);
             }}
@@ -104,8 +104,8 @@ import {
         {errorOtp1 !== null ? (
           <View
             style={{
-              height: height * 0.29,
-              width: width * 0.75,
+              height: height * 0.19,
+              width: width * 0.69,
               alignSelf: 'center',
             }}>
             <Text style={{color: 'red'}}> {errorOtp1}</Text>
@@ -124,7 +124,7 @@ import {
         <View style={styles.last}>
           <View style={{height: height * 0.1, justifyContent: 'center'}}>
             <Text style={{fontSize: 14, fontWeight: '400', color: 'white'}}>
-              Didn't receive the code
+              Didn't receive the code?
             </Text>
           </View>
           <TouchableOpacity onPress={() => onSubmit()}>
@@ -160,8 +160,8 @@ import {
       alignItems: 'center',
     },
     img: {
-      width: width * 0.17,
-      height: height * 0.09,
+      width:45,
+      height: 44,
     },
     logo: {
       width: width * 0.5,
@@ -169,7 +169,7 @@ import {
     },
     welcome: {
       width: width * 1,
-      height: height * 0.09,
+      height: height * 0.095,
       justifyContent: 'space-evenly',
       alignItems: 'center',
       // backgroundColor:'green'
@@ -186,9 +186,9 @@ import {
       justifyContent: 'space-evenly',
     },
     input: {
-      width: width * 0.18,
+      width: width * 0.8,
       height: height * 0.03,
-      borderRadius: 10,
+      borderRadius: 1,
     },
     time: {
       width: width * 1,
@@ -203,9 +203,9 @@ import {
       alignItems: 'center',
     },
     code: {
-      width: width * 0.85,
-      height: height * 0.14,
+      width: width * 0.5,
+      height: height * 0.12,
       justifyContent:"center",
-      alignSelf:"center"
+      alignSelf:"center",
     },
   });

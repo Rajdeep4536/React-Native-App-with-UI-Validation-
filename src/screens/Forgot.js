@@ -16,12 +16,12 @@ const Forgot = ({navigation}) => {
   // step 2
   const emailValidate = email => {
     var Regex =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     if (email === '' || email === undefined || email === null) {
-      setErrorEmail('*Plese enter email,');
+      setErrorEmail('Please enter email. ');
     } else if (!Regex.test(email)) {
-      setErrorEmail('*Plese enter valid email.');
+      setErrorEmail('*Please enter valid email.');
     } else {
       setErrorEmail(null);
     }
@@ -50,7 +50,7 @@ const Forgot = ({navigation}) => {
        navigation.navigate('Otp');
       // alert('Thank you');
     } else {
-      alert('something went wrong');
+      alert('Something went wrong');
     }
   };
   ///
@@ -64,11 +64,11 @@ const Forgot = ({navigation}) => {
           />
         </View>
         <View style={styles.forgetView}>
-          <Text style={styles.forget}>Forget Password</Text>
+          <Text style={styles.forget}>Forgot Password?</Text>
         </View>
         <View style={styles.EnterView}>
           <Text style={styles.EnterText}>
-            Enter you details to recieve a test link
+            Enter you details to receive a test link
           </Text>
         </View>
         <View style={styles.EmailView}>
@@ -85,10 +85,10 @@ const Forgot = ({navigation}) => {
                 placeholderTextColor="rgb(112,112,113)"
                 keyboardType="email-address"
                 maxLength={30}
-                autoCapitalize={false}
+                autoCapitalize={'none'}
                 onChangeText={text => {
                   setEmail(text), emailValidate(text);
-                }}
+                }}                
                 style={styles.emailText}
               />
             </View>
@@ -96,7 +96,7 @@ const Forgot = ({navigation}) => {
           {errorEmail !== null ? (
             <View
               style={{
-                height: height * 0.035,
+                height: height * 0.048,
                 width: width * 0.85,
                 alignSelf: 'center',
               }}>
@@ -128,12 +128,13 @@ export default Forgot;
 const styles = StyleSheet.create({
   SAfeView: {
     backgroundColor: 'rgb(16,16,16)',
-    height: height * 1,
+    height: height * 1.5,
   },
   MainView: {
     alignItems: 'center',
     height: height * 1,
     width: width * 1,
+    top:42
   },
   LogoView: {
     height: height * 0.2,
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     width: 220,
   },
   forgetView: {
-    height: height * 0.07,
+    height: height * 0.056,
     width: width * 0.85,
     justifyContent: 'center',
     alignItems: 'center',
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   EnterView: {
-    height: height * 0.07,
+    height: height * 0.08,
     width: width * 0.8,
     // justifyContent:"center",
     alignItems: 'center',
@@ -199,14 +200,14 @@ const styles = StyleSheet.create({
     width: 20,
   },
   ETextView: {
-    height: height * 0.04,
+    height: height * 0.06,
     width: width * 0.7,
     // backgroundColor: 'yellow',
     justifyContent: 'center',
     // alignItems: 'center',
   },
   emailText: {
-    height: height * 0.04,
+    height: height * 0.06,
     width: width * 0.65,
     // backgroundColor: 'lime',
     fontSize: 16,
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'white',
   },
   SendTouchable: {
-    height: height * 0.07,
+    height: height * 0.06,
     width: width * 0.85,
     backgroundColor: 'rgb(230,0,129)',
     justifyContent: 'center',

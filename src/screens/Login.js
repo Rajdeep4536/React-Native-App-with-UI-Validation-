@@ -25,9 +25,9 @@ import {
       var Regex =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (email === '' || email === undefined || email === null) {
-        setErrorEmail('Please enter email or phone number,');
+        setErrorEmail('Please enter email or Phone number,');
       } else if (!(Regex.test(email) | phoneRegex.test(email))) {
-        setErrorEmail('*Please enter valid email or phone number.');
+        setErrorEmail('*Please enter valid email or Phone number.');
       } else {
         setErrorEmail(null);
       }
@@ -39,7 +39,7 @@ import {
         setErrorPassword('Please enter password.');
         // setCheckPassword(false)
       } else if (!passwordRegex.test(pass)) {
-        setErrorPassword('*Please enter valid password.');
+        setErrorPassword('*Password must contain (0-9) (a-z) (A-Z) (@-*)');
         // setCheckPassword(false)
       } else {
         setErrorPassword(null);
@@ -93,7 +93,7 @@ import {
         <View style={styles.middle}>
           <View style={styles.welcome}>
             <Text style={{fontSize: 30, color: 'gray', fontWeight: '500'}}>
-              welcome back
+              Welcome back
             </Text>
             <Text style={{fontSize: 17, color: 'gray', fontWeight: '300'}}>
               you've been missed!
@@ -106,14 +106,14 @@ import {
               <TouchableOpacity>
                 <Image
                   style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/mail.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/mail2.png')}
                 />
               </TouchableOpacity>
             </View>
             <View style={styles.input}>
               <TextInput
                 style={styles.TextInput}
-                placeholder="Email or phone number"
+                placeholder="Enter your email"
                 autoCapitalize={'none'}
                 placeholderTextColor={'gray'}
                 keyboardType="email-address"
@@ -127,8 +127,8 @@ import {
           {errorEmail !== null ? (
             <View
               style={{
-                height: height * 0.027,
-                width: width * 0.85,
+                height: height * 0.036,
+                width: width * 0.92,
                 alignSelf: 'center',
               }}>
               <Text style={{color: 'red'}}> {errorEmail}</Text>
@@ -173,7 +173,7 @@ import {
                   <Image
                     style={styles.image}
                     //   source={require('../assets/images/closeeye.png')}
-                    source={require('/Users/mobiloitte/MyProject/src/Images/closeeye.png')}
+                    source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
                   />
                 )}
               </TouchableOpacity>
@@ -183,8 +183,8 @@ import {
         {errorPassword !== null ? (
           <View
             style={{
-              height: height * 0.025,
-              width: width * 0.85,
+              height: height * 0.045,
+              width: width * 0.89,
               alignSelf: 'center',
             }}>
             <Text style={{color: 'red'}}> {errorPassword}</Text>
@@ -198,20 +198,20 @@ import {
               }}>
               {passwordVisible1 == true && (
                 <Image
-                  style={styles.image}
+                  style={styles.image1}
                   // source={require('../assets/images/checkimg.png')}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/checkimg.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/openc.png')}
                 />
               )}
               {passwordVisible1 == false && (
                 <Image
                   style={styles.image}
                   // source={require('../assets/images/openc.png')}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/openc.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/checkimg.png')}
                 />
               )}
             </TouchableOpacity>
-            <Text style={{fontSize: 14, color: 'gray', fontWeight: 'bold'}}>
+            <Text style={{fontSize: 14, color: 'gray', fontWeight: 'bold',}}>
               Remember me
             </Text>
           </View>
@@ -224,7 +224,7 @@ import {
                     color: 'rgb(237,0,127)',
                     fontWeight: 'bold',
                     textDecorationLine: 'underline',
-                    textDecorationColor: 'rgb(237,0,127)',
+                    textDecorationColor: 'rgb(237,0,127)',borderBottomWidth:1,borderBottomColor:'rgb(237,0,127)'
                   }}>
                   Forget Password?
                 </Text>
@@ -255,14 +255,14 @@ import {
               <Image
                 style={styles.icon}
                 //   source={require('../assets/images/fffff.png')}
-                source={require('/Users/mobiloitte/MyProject/src/Images/fffff.png')}
+                source={require('/Users/mobiloitte/MyProject/src/screens/Screenshot_20220623-164927_6-removebg-preview.png')}
               />
             </TouchableOpacity>
             <TouchableOpacity>
               <Image
-                style={styles.icon}
+                style={styles.icon1}
                 //   source={require('../assets/images/twi.png')}
-                source={require('/Users/mobiloitte/MyProject/src/Images/twi.png')}
+                source={require('/Users/mobiloitte/MyProject/src/Images/Screenshot_20220623-164927_8-removebg-preview.png')}
               />
             </TouchableOpacity>
           </View>
@@ -275,7 +275,7 @@ import {
                 style={{
                   fontSize: 15,
                   color: 'rgb(237,0,127)',
-                  fontWeight: 'bold',paddingLeft:8,
+                  fontWeight: 'bold',paddingLeft:5,
                 }}>
                   Sign up
               </Text>
@@ -331,7 +331,7 @@ import {
     },
     both: {
       width: width * 0.91,
-      height: height * 0.07,
+      height: height * 0.072,
       borderWidth: 2,
       borderColor: 'rgb(36,37,38)',
       borderRadius: 7,
@@ -389,21 +389,27 @@ import {
       fontWeight: 'bold',
     },
     image: {
-      width: width * 0.065,
-      height: height * 0.03,
+      width: width * 0.058,
+      height: height * 0.028,
+      resizeMode: 'contain',
+    },
+    image1: {
+      width: width * 0.058,
+      height: height * 0.023,
       resizeMode: 'contain',
     },
     total: {
       width: width * 1,
       height: height * 0.07,
       // backgroundColor:'red',
-      justifyContent: 'space-evenly',
+      justifyContent: 'space-around',
       // alignItems:'center',
       flexDirection: 'row',
       top:10,
     },
     checkbox: {
-      width: width * 0.43,
+      width: width * 0.33,
+      marginBottom:22,
       // backgroundColor:"red",
       flexDirection: 'row',
       justifyContent: 'space-evenly',
@@ -422,7 +428,7 @@ import {
       alignItems:"flex-end"
     },
     log: {
-      width: width * 1,
+      width: width * 1.002,
       height: height * 0.12,
       // backgroundColor:'red',
       alignItems: 'center',
@@ -431,7 +437,7 @@ import {
     logbdr: {
       width: width * 0.9,
       height: height * 0.062,
-      borderRadius: 15,
+      borderRadius: 9,
       backgroundColor: 'rgb(237,0,127)',
       alignItems: 'center',
       justifyContent: 'center',
@@ -442,7 +448,11 @@ import {
     },
     icon: {
       width: width * 0.15,
-      height: height * 0.07,
+      height: height * 0.067,
+    },
+    icon1: {
+      width: width * 0.16,
+      height: height * 0.074,
     },
     ft: {
       width: width * 0.5,

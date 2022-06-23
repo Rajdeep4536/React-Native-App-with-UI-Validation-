@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,SafeAreaView,Dimensions,Image,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView,Dimensions,Image,TouchableOpacity,} from 'react-native'
 import React, { useEffect } from 'react'
 const {height,width} = Dimensions.get("screen");
 const Splash = props => {
@@ -6,12 +6,14 @@ const Splash = props => {
       setTimeout(() => {
         props.navigation.navigate('Onboarding');
       },3000);
+    
     });
+
   return (
     <SafeAreaView>
       <View style={styles.MainView}>
         <TouchableOpacity style={styles.TrTouchable}>
-          <Image source={require('/Users/mobiloitte/MyProject/src/Images/Tr.png')} style={styles.TrImg} />
+          <Image source={require('/Users/mobiloitte/MyProject/src/Images/Screenshot_20220623-172318_3-removebg-preview.png')} style={styles.TrImg} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
       alignItems:"center",
   },
   TrTouchable:{
-      height:height*0.7,
+      height:height*0.04,
       width:width*0.85,
       justifyContent:"center",
       alignItems:"center",
@@ -37,6 +39,6 @@ const styles = StyleSheet.create({
   },
   TrImg:{
       height:100,
-      width:300
+      width:200
   }
 });

@@ -57,7 +57,7 @@ import {
       if (passc === '' || passc === undefined || passc === null) {
         setErrorPasswordc('*Please enter confirm password.');
       } else if (Password != passc) {
-        setErrorPasswordc("*password don't match");
+        setErrorPasswordc("*Password don't match");
         setCheckPasswordc(false);
       } else {
         setErrorPasswordc(null);
@@ -161,7 +161,7 @@ import {
                 {passwordVisible == false && (
                   <Image
                     style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/closeeye.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
                   />
                 )}
               </TouchableOpacity>
@@ -170,8 +170,9 @@ import {
           {errorPassword !== null ? (
             <View
               style={{
-                height: height * 0.025,
-                width: width * 0.85,
+                height: height * 0.045,
+                width: width * 0.9,
+               
                 alignSelf: 'center',
               }}>
               <Text style={{color: 'red'}}> {errorPassword}</Text>
@@ -207,13 +208,13 @@ import {
                 {passwordVisible1 == true && (
                   <Image
                     style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/closeeye.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/openeye.png')}
                   />
                 )}
                 {passwordVisible1 == false && (
                   <Image
                     style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/openeye.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
                   />
                 )}
               </TouchableOpacity>
@@ -223,8 +224,8 @@ import {
         {errorPasswordc !== null ? (
           <View
             style={{
-              height: height * 0.025,
-              width: width * 0.85,
+              height: height * 0.035,
+              width: width * 0.9,
               alignSelf: 'center',
             }}>
             <Text style={{color: 'red'}}> {errorPasswordc}</Text>
@@ -292,7 +293,7 @@ import {
     },
     totalinput: {
       width: width * 1,
-      height: height * 0.2,
+      height: height * 0.19,
   
       justifyContent: 'space-evenly',
       alignItems: 'center',

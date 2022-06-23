@@ -7,12 +7,35 @@ import {
     Button,
     TouchableOpacity,
     Image,
+    BackHandler, Alert,
   } from 'react-native';
-  import React, {useState} from 'react';
+
+  import React, {useState,useEffect} from 'react';
   import AppIntroSlider from 'react-native-app-intro-slider';
   import {NavigationContainer} from '@react-navigation/native';
   const {height, width} = Dimensions.get('screen');
   const Onboarding = ({navigation}) => {
+    useEffect(() => {
+      const backAction = () => {
+        Alert.alert("Hold on!", "Are you sure you want to go back?", [
+          {
+            text: "Cancel",
+            onPress: () => null,
+            style: "cancel"
+          },
+          { text: "YES", onPress: () => BackHandler.exitApp() }
+        ]);
+        return true;
+      };
+  
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        backAction
+      );
+  
+      return () => backHandler.remove();
+    }, []);
+  
     const [showRealApp, setShowRealApp] = useState(false);
     const onDone = () => {
       setShowRealApp(true);
@@ -55,20 +78,9 @@ import {
   
                   // backgroundColor:"red"
                 }}>
-                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                  <Image
-                    source={require('/Users/mobiloitte/MyProject/src/Images/31.png')}
-                    style={{
-                      // height: height * 0.28,
-                      // width: width * 0.6,
-                      height: 220,
-                      width: 220,
-                      borderRadius: 110,
-                    }}
-                  />
-                </TouchableOpacity>
+               
               </View>
-              <View
+              {/* <View
                 style={{
                   height: height * 0.2,
                   width: width * 0.85,
@@ -78,7 +90,7 @@ import {
                 <Text style={{fontSize: 18, color: 'white'}}>
                   You Want to go Login Page then{' '}
                 </Text>
-              </View>
+              </View> */}
              
               <View
                 style={{
@@ -129,12 +141,13 @@ import {
           <AppIntroSlider
             data={slides}
             renderItem={renderItem}
-            onDone={onDone}
-            onSkip={onSkip}
+            onDone={()=> navigation.navigate('Login')}
+            onSkip={()=> navigation.navigate('Login')}
+   
             showSkipButton={true}
             bottomButton
             dotClickEnabled={true}
-            dotStyle={{backgroundColor: 'rgb(181,194,192)'}}
+            dotStyle={{backgroundColor: 'rgb(181,194,192)',}}
             activeDotStyle={{backgroundColor: 'rgb(126,222,207)'}}
             showSkipButton1={true}
            
@@ -161,6 +174,7 @@ import {
       textAlign: 'center',
       fontSize: 18,
       fontWeight: 'bold',
+     
     },
     UMainView: {
       height: height * 1,
@@ -190,12 +204,13 @@ import {
       fontWeight: 'bold',
     },
     TextView: {
-     
+      
       height: height * 0.3,
       width: width * 0.85,
     },
     introTextStyle: {
       fontSize: 16,
+      color:'black',
      
     },
   });
@@ -206,28 +221,29 @@ import {
       key: 'one',
       title: 'Professional you can trust',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente unde atque nisi. Aspernatur, impedit dignissimos incidunt similique nulla vero eos, soluta, odit fugiat beatae rerum laudantium.',
-      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage.png'),
+      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage-removebg-preview.png'),
       backgroundColor: '#59b2ab',
     },
     {
       key: 'two',
       title: 'Professional you can trust',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente unde atque nisi. Aspernatur, impedit dignissimos incidunt similique nulla vero eos, soluta, odit fugiat beatae rerum laudantium.',
-      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage.png'),
+      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage-removebg-preview.png'),
       backgroundColor: '#febe29',
     },
     {
       key: 'three',
       title: 'Professional you can trust',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente unde atque nisi. Aspernatur, impedit dignissimos incidunt similique nulla vero eos, soluta, odit fugiat beatae rerum laudantium.',
-      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage.png'),
+      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage-removebg-preview.png'),
       backgroundColor: '#22bcb5',
     },
     {
       key: 'four',
       title: 'Professional you can trust',
       text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente unde atque nisi. Aspernatur, impedit dignissimos incidunt similique nulla vero eos, soluta, odit fugiat beatae rerum laudantium.',
-      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage.png'),
+      image: require('/Users/mobiloitte/MyProject/src/Images/Uimage-removebg-preview.png'),
       backgroundColor: '#22bcb5',
+     
     },
   ];

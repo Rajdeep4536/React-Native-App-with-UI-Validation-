@@ -9,7 +9,6 @@ import {
     TextInput,
   } from 'react-native';
   import React, {useState} from 'react';
-  import { validatePathConfig } from '@react-navigation/native';
   import DatePicker from 'react-native-date-picker';
   const {height, width} = Dimensions.get('window');
   
@@ -27,18 +26,22 @@ import {
     const [username, setUsername] = useState('');
     const [errorUsername, setErrorUsername] = useState(null);
   
-    const [date, setDate] = useState('');
+     const [date, setDate] = useState('');
     const [errorDate, setErrorDate] = useState(null);
   const [date1, setDate1] = useState(new Date());
   const [open, setOpen] = useState(false);
-    const emailValidate = email => {
+
+  // const [date, setDate] = useState(new Date())
+
+  // return <DatePicker date={date} onDateChange={setDate} />
+     const emailValidate = email => {
       var Regex =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
       if (email === '' || email === undefined || email === null) {
-        setErrorEmail('Plese enter email,or phone number');
+        setErrorEmail('Please enter email or Phone number');
       } else if (!(Regex.test(email) | phoneRegex.test(email))) {
-        setErrorEmail('Plese enter valid email or phone number.');
+        setErrorEmail('*Please enter valid email or Phone number.');
       } else {
         setErrorEmail(null);
       }
@@ -50,7 +53,7 @@ import {
         setErrorPassword('Please enter password.');
         // setCheckPassword(false)
       } else if (!passwordRegex.test(pass)) {
-        setErrorPassword('Please enter valid password.');
+        setErrorPassword('*Please enter valid password.');
         // setCheckPassword(false)
       } else {
         setErrorPassword(null);
@@ -58,11 +61,11 @@ import {
       }
     };
     const usernameValidate = username => {
-      var Regex = /^[a-zA-Z ]{2,40}$/;
+      var Regex =/^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/;
       if (username === '' || username === undefined || username === null) {
         setErrorUsername('Please enter username');
       } else if (!Regex.test(username)) {
-        setErrorUsername('Please enter valid username');
+        setErrorUsername('*Please enter valid username');
       } else {
         setErrorUsername(null);
       }
@@ -72,7 +75,7 @@ import {
       if (date === '' || date === undefined || date === null) {
         setErrorDate('Please enter start date');
       } else if (!Regex.test(date)) {
-        setErrorDate('Please enter valid date');
+        setErrorDate('*Please enter valid date');
       } else {
         setErrorDate(null);
       }
@@ -89,7 +92,7 @@ import {
         //Flag = false;
         // return !Flag;
       } else if (!(Regex1.test(email) | phoneRegex.test(email))) {
-        setErrorEmail('Please enter valid email or phone number');
+        setErrorEmail('*Please enter valid email or phone number');
         return !Flag;
         Flag=false;
       } else {
@@ -101,7 +104,7 @@ import {
         Flag = false;
         // return !Flag;
       } else if (!Regex2.test(Password)) {
-        setErrorPassword('Please enter valid password');
+        setErrorPassword('*Please enter valid password');
         return !Flag;
       } else {
         setErrorPassword(null);
@@ -111,7 +114,7 @@ import {
         setErrorUsername('Please enter Username');
         // return !Flag;
       } else if (!Regex6.test(username)) {
-        setErrorUsername('Please enter valid username');
+        setErrorUsername('*Please enter valid username');
         return !Flag;
       } else {
         setErrorUsername(null);
@@ -122,7 +125,7 @@ import {
         // return !Flag;
          Flag = false;
       } else if (!Regex7.test(date)) {
-        setErrorDate('Please enter valid date');
+        setErrorDate('*Please enter valid date');
         // return !Flag;
         Flag = false;
       }
@@ -141,7 +144,7 @@ import {
       if (Validate()) {
         navigation.navigate('Reset');
       } else {
-        alert('Something went wrong');
+        alert('Please fill all the fields');
       }
     };
     return (
@@ -149,7 +152,7 @@ import {
         <View style={styles.head}>
           <View style={styles.main}>
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-              <Image style={styles.img} source={require('/Users/mobiloitte/MyProject/src/Images/back.png')} />
+              <Image style={styles.img} source={require('/Users/mobiloitte/MyProject/src/Images/Screenshot_20220621-123608_2.png')} />
             </TouchableOpacity>
             <Image style={styles.logo} source={require('/Users/mobiloitte/MyProject/src/Images/search.png')} />
           </View>
@@ -190,13 +193,13 @@ import {
             <View style={styles.input}>
               <TextInput
                 style={styles.TextInput}
-                placeholder="Enter your Email or phone number"
+                placeholder="Enter your email"
                 placeholderTextColor={'gray'}
                 keyboardType="email-address"
                 maxLength={40}
                 onChangeText={text => {
-                  setEmail(text), emailValidate(text);
-                  autoCapitalize='none'
+                setEmail(text), emailValidate(text);
+                
                 }}
               />
             </View>
@@ -205,8 +208,8 @@ import {
             <View
               style={{
                 // height: height * 0.03,
-                height: 15,
-                width: width * 0.85,
+                height: 29,
+                width: width * 0.91,
                 // alignSelf: 'center',
                 // backgroundColor:'green'
               }}>
@@ -241,8 +244,8 @@ import {
             <View
               style={{
                 // height: height * 0.03,
-                height: 15,
-                width: width * 0.85,
+                height: 29,
+                width: width * 0.91,
                 // alignSelf: 'center',
               }}>
               <Text style={{color: 'red'}}>{errorUsername}</Text>
@@ -289,7 +292,7 @@ import {
                   <Image
                     style={styles.image}
                     //   source={require('../assets/images/closeeye.png')}
-                    source={require('/Users/mobiloitte/MyProject/src/Images/closeeye.png')}
+                    source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
                   />
                 )}
               </TouchableOpacity>
@@ -299,8 +302,8 @@ import {
             <View
               style={{
                 // height: height * 0.025,
-                height: 15,
-                width: width * 0.85,
+                height: 29,
+                width: width * 0.91,
                 alignSelf: 'center',
               }}>
               <Text style={{color: 'red'}}> {errorPassword}</Text>
@@ -317,7 +320,7 @@ import {
                   fontWeight: 'bold',
                   width: width * 0.78,
                 }}
-               
+               value={date1}
                 placeholder="DD/MM/YYYY"
                 placeholderTextColor={'gray'}
                 keyboardType="number-pad"
@@ -328,9 +331,10 @@ import {
                 }}
                
               />
+              
               <TouchableOpacity onPress={() => setOpen(true)}>
                 <Image
-                  style={{width: width * 0.08}}
+                  style={{width: width * 0.08,top:15,}}
                   // source={require('../assets/images/date.png')}
                   source={require('/Users/mobiloitte/MyProject/src/Images/date.png')}
                 />
@@ -343,6 +347,7 @@ import {
                 onConfirm={date => {
                   setOpen(false);
                   setDate1(date);
+                  
                 }}
                 onCancel={() => {
                   setOpen(false);
@@ -356,8 +361,8 @@ import {
             <View
               style={{
                 // height: height * 0.02,
-                height: 15,
-                width: width * 0.85,
+                height: 29,
+                width: width * 0.87,
                 alignSelf: 'center',
   
                 //  alignSelf:'center',
@@ -371,19 +376,19 @@ import {
           <View style={styles.checkbox}>
             <TouchableOpacity
               onPress={() => {
-                setCheckBox(false);
-                setCheckBox1(true);
+                setCheckBox(true);
+                setCheckBox1(false);
               }}>
               {checkBox == true && (
                 <Image
                   style={styles.imagem}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/malebox.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/female.png')}
                 />
               )}
-              {checkBox == false && (
+              {checkBox == false&& (
                 <Image
                   style={styles.imagem}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/female.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/malebox.png')}
                 />
               )}
             </TouchableOpacity>
@@ -394,21 +399,21 @@ import {
           <View style={styles.checkbox}>
             <TouchableOpacity
               onPress={() => {
-                setCheckBox1(false);
-                setCheckBox(true);
+                setCheckBox1(true);
+                setCheckBox(false);
               }}>
               {checkBox1 == true && (
                 <Image
                   style={styles.imagem}
                   // source={require('../assets/images/malebox.png')}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/malebox.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/female.png')}
                 />
               )}
               {checkBox1 == false && (
                 <Image
                   style={styles.imagem}
                   // source={require('../assets/images/female.png')}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/female.png')}
+                  source={require('/Users/mobiloitte/MyProject/src/Images/malebox.png')}
                 />
               )}
             </TouchableOpacity>
@@ -434,7 +439,7 @@ import {
                 style={{
                   fontSize: 15,
                   fontWeight: 'bold',
-                  color: 'rgb(237,0,127)',paddingLeft:11,
+                  color: 'rgb(237,0,127)',paddingLeft:3,
                 }}>
                 Login
               </Text>
@@ -467,8 +472,8 @@ import {
       alignItems: 'center',
     },
     img: {
-      width: width * 0.08,
-      height: height * 0.02,
+      width:45,
+      height: 44,
     },
     logo: {
       width: width * 0.5,
