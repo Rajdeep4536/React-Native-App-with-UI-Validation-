@@ -9,6 +9,7 @@ import {
     TouchableOpacity,
   } from 'react-native';
   import React, {useState} from 'react';
+  import Icon from 'react-native-vector-icons/Feather';
   const {height, width} = Dimensions.get('window');
   const Login = ({navigation}) => {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -21,25 +22,25 @@ import {
     const [passwordVisible1, setPasswordVisible1] = useState(true);
   
     const emailValidate = email => {
-      var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      var phoneRegex = /^[789]\d{9}$/;
       var Regex =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (email === '' || email === undefined || email === null) {
-        setErrorEmail('Please enter email or Phone number,');
+        setErrorEmail('Please enter Email or Phone number');
       } else if (!(Regex.test(email) | phoneRegex.test(email))) {
-        setErrorEmail('*Please enter valid email or Phone number.');
+        setErrorEmail('*Please enter valid Email or Phone number.');
       } else {
         setErrorEmail(null);
       }
     };
     const _passwordvalidate = pass => {
       var passwordRegex =
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
-      if (pass === '' || email === undefined || email === null) {
+        /^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,}$/;
+      if (pass === '' || pass === undefined || pass === null) {
         setErrorPassword('Please enter password.');
         // setCheckPassword(false)
       } else if (!passwordRegex.test(pass)) {
-        setErrorPassword('*Password must contain (0-9) (a-z) (A-Z) (@-*)');
+        setErrorPassword('*Please enter valid password.');
         // setCheckPassword(false)
       } else {
         setErrorPassword(null);
@@ -48,25 +49,28 @@ import {
     };
     const Validate = () => {
       // const Flag=false;
-      var phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      var phoneRegex = /^[789]\d{9}$/;
       var Regex1 =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line no-useless-escape
+    //   return re.test(String(value).toLowerCase());
+    // }
+    
       let Flag = true;
       if (email === '') {
         setErrorEmail('Please enter email.');
         // Flag = false;
         // return !Flag;
       } else if (!(Regex1.test(email) | phoneRegex.test(email))) {
-        setErrorEmail('*Please enter valid email');
+        setErrorEmail('*Please enter valid email.');
         return !Flag;
       } else {
         setErrorEmail(null);
       }
-      var Regex2 = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
+      var Regex2 = /^(?=\S*[a-z])(?=\S*[A-Z])(?=\S*\d)(?=\S*[^\w\s])\S{8,}$/;
       if (Password === '') {
         setErrorPassword('Please enter password.');
-        // Flag = false;
-        return !Flag;
+        Flag = false;
+        // return !Flag;
       } else if (!Regex2.test(Password)) {
         setErrorPassword('*Please enter valid password');
         return !Flag;
@@ -162,20 +166,15 @@ import {
                 onPress={() => {
                   setPasswordVisible(!passwordVisible);
                 }}>
-                {passwordVisible == true && (
-                  <Image
-                    style={styles.image}
-                    //   source={require('../assets/images/openeye.png')}
-                    source={require('/Users/mobiloitte/MyProject/src/Images/openeye.png')}
-                  />
+                
+                 {passwordVisible == true && (
+                  <Icon name="eye" size={15}  color="white"  />
+                 
                 )}
                 {passwordVisible == false && (
-                  <Image
-                    style={styles.image}
-                    //   source={require('../assets/images/closeeye.png')}
-                    source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
-                  />
-                )}
+                  <Icon name="eye-off" size={15} color="white"/> 
+                )} 
+               
               </TouchableOpacity>
             </View>
           </View>
@@ -183,7 +182,7 @@ import {
         {errorPassword !== null ? (
           <View
             style={{
-              height: height * 0.045,
+              height: height * 0.036,
               width: width * 0.89,
               alignSelf: 'center',
             }}>
@@ -223,8 +222,8 @@ import {
                     fontSize: 14,
                     color: 'rgb(237,0,127)',
                     fontWeight: 'bold',
-                    textDecorationLine: 'underline',
-                    textDecorationColor: 'rgb(237,0,127)',borderBottomWidth:1,borderBottomColor:'rgb(237,0,127)'
+                    borderBottomWidth:0.19,borderBottomColor:"rgb(237,0,127)",
+                    textDecorationColor: 'rgb(237,0,127)'
                   }}>
                   Forget Password?
                 </Text>
@@ -255,7 +254,7 @@ import {
               <Image
                 style={styles.icon}
                 //   source={require('../assets/images/fffff.png')}
-                source={require('/Users/mobiloitte/MyProject/src/screens/Screenshot_20220623-164927_6-removebg-preview.png')}
+                source={require('/Users/mobiloitte/MyProject/src/Images/Screenshot_20220623-164927_6-removebg-preview.png')}
               />
             </TouchableOpacity>
             <TouchableOpacity>
@@ -268,7 +267,7 @@ import {
           </View>
           <View style={styles.account}>
             <Text style={{fontSize: 15, color: 'gray', fontWeight: 'bold'}}>
-              You haven't account?
+              You haven't any account?
             </Text>
             <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
               <Text
@@ -277,7 +276,7 @@ import {
                   color: 'rgb(237,0,127)',
                   fontWeight: 'bold',paddingLeft:5,
                 }}>
-                  Sign up
+                  Sign Up
               </Text>
             </TouchableOpacity>
           </View>
@@ -295,7 +294,7 @@ import {
     },
     head: {
       width: width * 1,
-      height: height * 0.18,
+      height: height * 0.23,
       // backgroundColor:'red',
       justifyContent: 'center',
       alignItems: 'center',
@@ -324,14 +323,14 @@ import {
     },
     totalinput: {
       width: width * 1,
-      height: height * 0.21,
-      // backgroundColor:'red',
+      height: height * 0.19,
+      //backgroundColor:'red',
       justifyContent: 'space-evenly',
       alignItems: 'center',
     },
     both: {
       width: width * 0.91,
-      height: height * 0.072,
+      height: height * 0.07,
       borderWidth: 2,
       borderColor: 'rgb(36,37,38)',
       borderRadius: 7,
@@ -389,23 +388,24 @@ import {
       fontWeight: 'bold',
     },
     image: {
-      width: width * 0.058,
-      height: height * 0.028,
+      width: width * 0.055,
+      height: height * 0.027,
       resizeMode: 'contain',
     },
     image1: {
-      width: width * 0.058,
+      width: width * 0.038,
       height: height * 0.023,
       resizeMode: 'contain',
+      paddingLeft:13
     },
     total: {
-      width: width * 1,
+      width: width * 0.89,
       height: height * 0.07,
       // backgroundColor:'red',
       justifyContent: 'space-around',
       // alignItems:'center',
       flexDirection: 'row',
-      top:10,
+
     },
     checkbox: {
       width: width * 0.33,
@@ -416,12 +416,12 @@ import {
     },
     FrgtMView: {
       width: width * 0.4,
-      height: height * 0.032,
+      height: height * 0.034,
       // borderBottomWidth: 1,
       // borderBottomColor: 'rgb(237,0,127)',
     },
     forget: {
-      width: width * 0.4,
+      width: width * 0.5,
       height: height * 0.032,
       // borderBottomWidth: 1,
       // borderBottomColor: 'rgb(237,0,127)',
@@ -455,7 +455,7 @@ import {
       height: height * 0.074,
     },
     ft: {
-      width: width * 0.5,
+      width: width * 0.4,
       flexDirection: 'row',
       justifyContent: 'space-evenly',
     },

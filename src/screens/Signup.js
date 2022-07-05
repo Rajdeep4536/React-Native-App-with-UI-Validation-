@@ -9,6 +9,7 @@ import {
     TextInput,
   } from 'react-native';
   import React, {useState} from 'react';
+  import Icon from 'react-native-vector-icons/Feather';
   import DatePicker from 'react-native-date-picker';
   const {height, width} = Dimensions.get('window');
   
@@ -61,11 +62,11 @@ import {
       }
     };
     const usernameValidate = username => {
-      var Regex =/^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/;
+      var Regex =/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
       if (username === '' || username === undefined || username === null) {
-        setErrorUsername('Please enter username');
+        setErrorUsername('Please enter name');
       } else if (!Regex.test(username)) {
-        setErrorUsername('*Please enter valid username');
+        setErrorUsername('*Please enter valid name');
       } else {
         setErrorUsername(null);
       }
@@ -109,17 +110,17 @@ import {
       } else {
         setErrorPassword(null);
       }
-      var Regex6 = /^[a-zA-Z ]{2,40}$/;
+      var Regex6 = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
       if (username == '') {
-        setErrorUsername('Please enter Username');
+        setErrorUsername('Please enter name');
         // return !Flag;
       } else if (!Regex6.test(username)) {
-        setErrorUsername('*Please enter valid username');
+        setErrorUsername('*Please enter valid name');
         return !Flag;
       } else {
         setErrorUsername(null);
       }
-      var Regex7 = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+      var Regex7 = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
       if (date === '') {
         setErrorDate('Please enter date');
         // return !Flag;
@@ -144,7 +145,7 @@ import {
       if (Validate()) {
         navigation.navigate('Reset');
       } else {
-        alert('Please fill all the fields');
+        alert('Please fill appropriately');
       }
     };
     return (
@@ -208,7 +209,7 @@ import {
             <View
               style={{
                 // height: height * 0.03,
-                height: 29,
+                height: 23,
                 width: width * 0.91,
                 // alignSelf: 'center',
                 // backgroundColor:'green'
@@ -244,7 +245,7 @@ import {
             <View
               style={{
                 // height: height * 0.03,
-                height: 29,
+                height: 23,
                 width: width * 0.91,
                 // alignSelf: 'center',
               }}>
@@ -280,20 +281,11 @@ import {
                   setPasswordVisible(!passwordVisible);
                 }}>
                 {passwordVisible == true && (
-                  <Image
-                    style={styles.image}
-                    //   source={require('../assets/images/openeye.png')}
-                    source={require('/Users/mobiloitte/MyProject/src/Images/openeye.png')}
-                  />
-                
+                  <Icon name="eye" size={15}  color="white"  />
 
                 )}
                 {passwordVisible == false && (
-                  <Image
-                    style={styles.image}
-                    //   source={require('../assets/images/closeeye.png')}
-                    source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
-                  />
+                  <Icon name="eye-off" size={15} color="white"/> 
                 )}
               </TouchableOpacity>
             </View>
@@ -302,7 +294,7 @@ import {
             <View
               style={{
                 // height: height * 0.025,
-                height: 29,
+                height: 21,
                 width: width * 0.91,
                 alignSelf: 'center',
               }}>
@@ -361,12 +353,12 @@ import {
             <View
               style={{
                 // height: height * 0.02,
-                height: 29,
+                height: 21,
                 width: width * 0.87,
                 alignSelf: 'center',
   
                 //  alignSelf:'center',
-                // backgroundColor: 'green',
+                 //backgroundColor: 'green',
               }}>
               <Text style={{color: 'red', fontSize: 14}}>{errorDate}</Text>
             </View>
@@ -426,7 +418,7 @@ import {
           <TouchableOpacity onPress={() => onSubmit()}>
             <View style={styles.sign}>
               <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
-                Sign up
+                Sign Up
               </Text>
             </View>
           </TouchableOpacity>
@@ -459,7 +451,7 @@ import {
     },
     head: {
       width: width * 0.8,
-      height: height * 0.15,
+      height: height * 0.14,
       // backgroundColor:'red',
       justifyContent: 'center',
     },
@@ -481,17 +473,17 @@ import {
     },
     welcome: {
       width: width * 1,
-      height: height * 0.09,
+      height: height * 0.056,
       justifyContent: 'space-evenly',
       alignItems: 'center',
     },
     middle: {
       width: width * 1,
-      height: height * 0.12,
+      height: height * 0.13,
     },
     totalinput: {
       width: width * 1,
-      height: height * 0.4,
+      height: height * 0.38,
   
       justifyContent: 'space-evenly',
       alignItems: 'center',
@@ -557,12 +549,12 @@ import {
     },
     image: {
       width: width * 0.065,
-      height: height * 0.03,
+      height: height * 0.033,
       resizeMode: 'contain',
     },
     imagem: {
-      width: width * 0.1,
-      height: height * 0.1,
+      width: width * 0.07,
+      height: height * 0.04,
       resizeMode: 'contain',
     },
     date: {
@@ -579,7 +571,7 @@ import {
       
     },
     allcheck: {
-      width: width * 0.8,
+      width: width * 0.65,
       height: height * 0.1,
   
       flexDirection: 'row',

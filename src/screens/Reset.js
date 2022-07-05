@@ -9,6 +9,7 @@ import {
     TextInput,
   } from 'react-native';
   import React, {useState} from 'react';
+  import Icon from 'react-native-vector-icons/Feather';
   const {height, width} = Dimensions.get('window');
   
   const Reset = ({navigation}) => {
@@ -43,7 +44,7 @@ import {
       var passwordRegex =
         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/;
       if (pass === '' || pass === undefined || pass === null) {
-        setErrorPassword('*Please enter password.');
+        setErrorPassword('Please enter password.');
         // setCheckPassword(false)
       } else if (!passwordRegex.test(pass)) {
         setErrorPassword('  *Please enter valid password.');
@@ -55,7 +56,7 @@ import {
     };
     const _passwordvalidatec = passc => {
       if (passc === '' || passc === undefined || passc === null) {
-        setErrorPasswordc('*Please enter confirm password.');
+        setErrorPasswordc('Please enter confirm password.');
       } else if (Password != passc) {
         setErrorPasswordc("*Password don't match");
         setCheckPasswordc(false);
@@ -95,7 +96,7 @@ import {
       if (Validate()) {
         navigation.navigate('Login');
       } else {
-        alert('something went wrong');
+        alert('Please fill password appropriately');
       }
     };
     return (
@@ -105,7 +106,7 @@ import {
             <TouchableOpacity onPress={() => navigation.navigate('Otp')}>
               <Image
                 style={styles.img}
-              source={require('/Users/mobiloitte/MyProject/src/Images/back.png')}
+              source={require('/Users/mobiloitte/MyProject/src/Images/Screenshot_20220621-123608_2.png')}
               />
             </TouchableOpacity>
             <Image
@@ -153,16 +154,10 @@ import {
                   setPasswordVisible(!passwordVisible);
                 }}>
                 {passwordVisible == true && (
-                  <Image
-                    style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/openeye.png')}
-                  />
+                  <Icon name="eye" size={15} color="white"/> 
                 )}
                 {passwordVisible == false && (
-                  <Image
-                    style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
-                  />
+                  <Icon name="eye-off" size={15} color="white"/> 
                 )}
               </TouchableOpacity>
             </View>
@@ -206,16 +201,10 @@ import {
                   setPasswordVisible1(!passwordVisible1);
                 }}>
                 {passwordVisible1 == true && (
-                  <Image
-                    style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/openeye.png')}
-                  />
+                  <Icon name="eye" size={15}  color="white"  />
                 )}
                 {passwordVisible1 == false && (
-                  <Image
-                    style={styles.image}
-                  source={require('/Users/mobiloitte/MyProject/src/Images/eye-removebg-preview.png')}
-                  />
+                  <Icon name="eye-off" size={15} color="white"/> 
                 )}
               </TouchableOpacity>
             </View>
@@ -274,8 +263,8 @@ import {
       alignItems: 'center',
     },
     img: {
-      width: width * 0.08,
-      height: height * 0.02,
+      width:45,
+      height:44,
     },
     logo: {
       width: width * 0.5,

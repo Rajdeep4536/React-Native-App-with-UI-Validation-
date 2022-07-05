@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View,SafeAreaView,Dimensions,Image,TouchableOpacity,} from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 const {height,width} = Dimensions.get("screen");
 const Splash = props => {
+  const [isVisible, setIsVisible] = useState(false);
     useEffect(() => {
       setTimeout(() => {
         props.navigation.navigate('Onboarding');
+        setIsVisible(true);
       },3000);
     
-    });
+    },[]);
 
   return (
     <SafeAreaView>

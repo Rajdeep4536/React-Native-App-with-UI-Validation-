@@ -149,11 +149,11 @@ const styles = StyleSheet.create({
     width: 220,
   },
   forgetView: {
-    height: height * 0.056,
+    height: height * 0.045,
     width: width * 0.85,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'yellow',
+     //backgroundColor: 'yellow',
   },
   forget: {
     color: 'rgb(105,105,105)',
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   EmailView: {
-    height: height * 0.1,
+    height: height * 0.09,
     width: width * 0.85,
     // backgroundColor: 'cyan',
   },
@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
   },
   ETextView: {
     height: height * 0.06,
-    width: width * 0.7,
-    // backgroundColor: 'yellow',
+    width: width * 0.9,
+    //backgroundColor: 'yellow',
     justifyContent: 'center',
     // alignItems: 'center',
   },
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     height: height * 0.17,
     width: width * 0.85,
     // backgroundColor:"rgb(230,0,129)"
-    // backgroundColor: 'white',
+    //backgroundColor: 'white',
   },
   SendTouchable: {
     height: height * 0.06,

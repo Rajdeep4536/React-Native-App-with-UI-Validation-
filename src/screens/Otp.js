@@ -16,6 +16,7 @@ import {
     const [errorOtp1, setErrorOtp1] = useState(null);
   
     const otpValidate = Otp1 => {
+      
       if (Otp1 === '') {
         setErrorOtp1('Enter otp');
       } else {
@@ -25,10 +26,12 @@ import {
   
     const validate = () => {
       let flag = true;
+      
       if (Otp1 === '') {
         setErrorOtp1('*Please enter OTP');
         flag = false;
-      } else {
+      }
+      else {
         setErrorOtp1(null);
       }
   
@@ -104,9 +107,9 @@ import {
         {errorOtp1 !== null ? (
           <View
             style={{
-              height: height * 0.19,
+              height: height * 0.09,
               width: width * 0.69,
-              alignSelf: 'center',
+              alignSelf: 'center',//backgroundColor:'red'
             }}>
             <Text style={{color: 'red'}}> {errorOtp1}</Text>
           </View>
@@ -147,13 +150,13 @@ import {
     },
     head: {
       width: width * 0.8,
-      height: height * 0.15,
+      height: height * 0.19,
       // backgroundColor:'red',
       justifyContent: 'center',
     },
     main: {
       width: width * 0.8,
-      height: height * 0.08,
+      height: height * 0.09,
       // backgroundColor:'green',
       flexDirection: 'row',
       justifyContent: 'space-evenly',
@@ -165,18 +168,18 @@ import {
     },
     logo: {
       width: width * 0.5,
-      height: height * 0.07,
+      height: height * 0.06,
     },
     welcome: {
       width: width * 1,
-      height: height * 0.095,
+      height: height * 0.078,
       justifyContent: 'space-evenly',
       alignItems: 'center',
       // backgroundColor:'green'
     },
     middle: {
       width: width * 1,
-      height: height * 0.16,
+      height: height * 0.13,
       // backgroundColor:'red'
     },
     totalotp: {
@@ -204,7 +207,7 @@ import {
     },
     code: {
       width: width * 0.5,
-      height: height * 0.12,
+      height: height * 0.1,
       justifyContent:"center",
       alignSelf:"center",
     },
