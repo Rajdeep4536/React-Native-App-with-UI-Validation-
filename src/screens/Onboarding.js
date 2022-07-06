@@ -4,47 +4,13 @@ import {
     View,
     SafeAreaView,
     Dimensions,
-    Button,
-    TouchableOpacity,
     Image,
-    BackHandler, Alert,
   } from 'react-native';
 
-  import React, {useState,useEffect} from 'react';
   import AppIntroSlider from 'react-native-app-intro-slider';
-  import {NavigationContainer} from '@react-navigation/native';
   const {height, width} = Dimensions.get('screen');
   const Onboarding = ({navigation}) => {
-    useEffect(() => {
-      const backAction = () => {
-        Alert.alert("Hold on!", "Are you sure you want to go back?", [
-          {
-            text: "Cancel",
-            onPress: () => null,
-            style: "cancel"
-          },
-          { text: "YES", onPress: () => BackHandler.exitApp() }
-        ]);
-        return true;
-      };
-  
-      const backHandler = BackHandler.addEventListener(
-        "hardwareBackPress",
-        backAction
-      );
-  
-      return () => backHandler.remove();
-    }, []);
-  
-    const [showRealApp, setShowRealApp] = useState(false);
-    const onDone = () => {
-      setShowRealApp(true);
-      // onPress={() => navigation.navigate('Login')}
-      // onPress={() => navigation.navigate('Signup')}
-    };
-    const onSkip = () => {
-      setShowRealApp(true);
-    };
+
     const renderItem = ({item}) => {
       return (
         <SafeAreaView>
@@ -65,85 +31,13 @@ import {
     };
     return (
       <>
-        {showRealApp ? (
-          //   onPress={() => navigation.navigate('Signup')}
-          <SafeAreaView>
-            <View style={styles.container}>
-              <View
-                style={{
-                  height: height * 0.4,
-                  width: width * 0.85,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-  
-                  // backgroundColor:"red"
-                }}>
-               
-              </View>
-              {/* <View
-                style={{
-                  height: height * 0.2,
-                  width: width * 0.85,
-                  alignItems: 'center',
-                  justifyContent: 'flex-end',
-                }}>
-                <Text style={{fontSize: 18, color: 'white'}}>
-                  You Want to go Login Page then{' '}
-                </Text>
-              </View> */}
-             
-              <View
-                style={{
-                  height: height * 0.15,
-                  width: width * 0.85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <TouchableOpacity
-                  style={{
-                    height: height * 0.08,
-                    width: width * 0.4,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    // borderColor: 'rgb(19,47,74)',
-                    backgroundColor: 'rgb(62,189,253)',
-                    borderRadius: 10,
-                    opacity: 1,
-                    shadowOpacity: 1,
-                  }}
-                  onPress1={() => setShowRealApp(false)}
-                  onPress={() => navigation.navigate('Login')}>
-                  <Text style={{fontSize: 18, color: 'white'}}>Click Here </Text>
-                </TouchableOpacity>
-              </View>
-              <TouchableOpacity
-                style={{
-                  height: height * 0.08,
-                  width: width * 0.85,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  // borderColor: 'rgb(19,47,74)',
-                  backgroundColor: 'rgb(62,189,253)',
-                  borderRadius: 10,
-                  opacity: 1,
-                  shadowOpacity: 1,
-                }}
-                onPress={() => setShowRealApp(false)}
-               
-              >
-                <Text style={{fontSize: 18, color: 'white'}}>
-                  Go to Slider page Click Here
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </SafeAreaView>
-        ) : (
+       
           <AppIntroSlider
             data={slides}
             renderItem={renderItem}
             onDone={()=> navigation.navigate('Login')}
             onSkip={()=> navigation.navigate('Login')}
-   
+            
             showSkipButton={true}
             bottomButton
             dotClickEnabled={true}
@@ -152,7 +46,7 @@ import {
             showSkipButton1={true}
            
           />
-        )}
+        
       </>
     );
   };
@@ -161,7 +55,7 @@ import {
   
   const styles = StyleSheet.create({
     container: {
-      // flex:1,
+   
       height: height * 1,
       width: width * 1,
       backgroundColor: '#038fc5',

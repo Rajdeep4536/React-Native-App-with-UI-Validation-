@@ -10,6 +10,7 @@ import {
     Text,
     TouchableOpacity
 } from "react-native";
+// const ApiContainer = (props) => {
 class ApiContainer extends Component {
     constructor(props) {
         super(props);

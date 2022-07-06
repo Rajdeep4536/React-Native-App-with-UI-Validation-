@@ -2,11 +2,11 @@ import { StyleSheet, Text, View,SafeAreaView,Dimensions,Image,TouchableOpacity,}
 import React, { useEffect,useState } from 'react'
 const {height,width} = Dimensions.get("screen");
 const Splash = props => {
-  const [isVisible, setIsVisible] = useState(false);
+ 
     useEffect(() => {
       setTimeout(() => {
-        props.navigation.navigate('Onboarding');
-        setIsVisible(true);
+        props.navigation.replace('Onboarding');
+        
       },3000);
     
     },[]);
